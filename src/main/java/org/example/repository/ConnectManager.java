@@ -16,5 +16,8 @@ public class ConnectManager {
                 .build();
         return new MetadataSources(registry).buildMetadata().buildSessionFactory();
     }
+    public static void shutdown() {
+            sessionFactory.close();
+    }
 
 }

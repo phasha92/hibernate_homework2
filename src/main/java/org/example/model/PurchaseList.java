@@ -7,11 +7,9 @@ import org.example.util.composite_keys.PurchaseListKey;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "purchase_list")
 @Setter
 @Getter
 public class PurchaseList {

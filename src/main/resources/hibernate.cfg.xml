@@ -17,12 +17,14 @@
         <!-- Set the current session context -->
         <property name="current_session_context_class">thread</property>
         <!-- Drop and re-create the database schema on startup -->
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">none</property>
+        <property name="format_sql">true</property>
 
         <mapping class="org.example.model.Teacher"/>
         <mapping class="org.example.model.Course"/>
         <mapping class="org.example.model.PurchaseList"/>
         <mapping class="org.example.model.Subscription"/>
         <mapping class="org.example.model.Student"/>
+        <mapping class="org.example.model.LinkedPurchaseList"/>
     </session-factory>
 </hibernate-configuration>
