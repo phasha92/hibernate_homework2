@@ -58,4 +58,15 @@ public class CourseRepository {
         }
         return resultSet;
     }
+
+    public Course getCourseByName(String name) {
+        Course course;
+        try (Session session = sessionFactory.openSession()) {
+            course = session.createQuery("FROM Course WHERE LOWER(name) = :name", Course.class)
+                    .setParameter("name", name.toLowerCase())
+                    .uniqueResultOptional().orElse(null);
+        }
+        return course;
+    }
+
 }

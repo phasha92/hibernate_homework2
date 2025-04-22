@@ -22,7 +22,7 @@ public class Course {
     private CourseType type;
     private String description;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "teacher_id",referencedColumnName = "id")
+    @JoinColumn(name = "teacher_id", referencedColumnName = "id")
     private Teacher teacher;
     @Column(name = "students_count")
     private Integer studentsCount;

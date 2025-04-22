@@ -7,7 +7,8 @@ import org.example.repository.StudentRepository;
 import java.util.Set;
 
 public class StudentService {
-    private StudentRepository repository;
+
+    private final StudentRepository repository;
 
     public StudentService(StudentRepository repository) {
         this.repository = repository;
@@ -27,6 +28,10 @@ public class StudentService {
 
     public Set<Student> findStudentsByName(String namePart) {
         return repository.findStudentsByName(namePart);
+    }
+
+    public Student getStudentByName(String name) {
+        return repository.getStudentByName(name);
     }
 }
 

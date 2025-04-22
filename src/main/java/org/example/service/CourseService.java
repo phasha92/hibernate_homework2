@@ -10,6 +10,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class CourseService {
+
     private final CourseRepository repository;
 
     public CourseService(CourseRepository repository) {
@@ -39,8 +40,10 @@ public class CourseService {
                 .noneMatch(t -> t.name().equalsIgnoreCase(finalType))) {
             return resultSet;
         }
-
         return repository.findAllCoursesByType(type);
     }
 
+    public Course getCourseByName(String name) {
+        return repository.getCourseByName(name);
+    }
 }

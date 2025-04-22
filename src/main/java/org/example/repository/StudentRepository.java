@@ -19,7 +19,6 @@ public class StudentRepository {
 
     public Set<Student> findAll() {
         Set<Student> resultSet = new TreeSet<>(Comparator.comparingInt(Student::getId));
-
         try (Session session = sessionFactory.openSession()) {
             resultSet.addAll(session.createQuery("from Student", Student.class).list());
         }
@@ -28,7 +27,6 @@ public class StudentRepository {
 
     public Student findById(Integer id) {
         Student student;
-
         try (Session session = sessionFactory.openSession()) {
             student = session.createQuery("from Student where id=:id", Student.class)
                     .setParameter("id", id)
@@ -65,5 +63,15 @@ public class StudentRepository {
             }
         }
         return resultSet;
+    }
+
+    public Student getStudentByName(String name) {
+        Student student;
+        try (Session session = sessionFactory.openSession()) {
+            student = session.createQuery("FROM Student WHERE LOWER(name) = :name", Student.class)
+                    .setParameter("name", name.toLowerCase())
+                    .uniqueResultOptional().orElse(null);
+        }
+        return student;
     }
 }
